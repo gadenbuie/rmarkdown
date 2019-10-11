@@ -6,7 +6,7 @@
 \usage{
 html_document_base(smart = TRUE, theme = NULL, self_contained = TRUE,
   lib_dir = NULL, mathjax = "default", pandoc_args = NULL,
-  template = "default", dependency_resolver = NULL,
+  template = NULL, dependency_resolver = NULL,
   copy_resources = FALSE, extra_dependencies = NULL,
   bootstrap_compatible = FALSE, ...)
 }

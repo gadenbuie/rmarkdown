@@ -20,7 +20,7 @@ html_document_base <- function(smart = TRUE,
                                lib_dir = NULL,
                                mathjax = "default",
                                pandoc_args = NULL,
-                               template = "default",
+                               template = NULL,
                                dependency_resolver = NULL,
                                copy_resources = FALSE,
                                extra_dependencies = NULL,
@@ -47,6 +47,13 @@ html_document_base <- function(smart = TRUE,
     validate_self_contained(mathjax)
     args <- c(args, "--self-contained")
   }
+
+  # template path and assets
+  if (identical(template, "default"))
+    args <- c(args, "--template",
+              pandoc_path_arg(rmarkdown_system_file("rmd/h/default.html")))
+  else if (!is.null(template))
+    args <- c(args, "--template", pandoc_path_arg(template))
 
   # custom args
   args <- c(args, pandoc_args)
